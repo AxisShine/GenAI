@@ -1,13 +1,31 @@
 # Backend (FastAPI)
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from google.generativeai import configure, generate_text
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API key from .env
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
+    raise ValueError("Missing GOOGLE_API_KEY in .env file")
+# Configure API key
+genai.configure(api_key=GOOGLE_API_KEY)
+
+# Initialize the Gemini model
+model = genai.GenerativeModel("gemini-pro")
+
+# Example function to generate text
+def generate_learning_material(prompt):
+    response = model.generate_content(prompt)
+    return response.text if response else "Error generating content"
 
 # Initialize FastAPI app
 app = FastAPI()
-
-# Configure Gemini API (Replace 'YOUR_GEMINI_API_KEY' with actual key)
-configure(api_key='YOUR_GEMINI_API_KEY')
 
 # Data models
 class QuizResponse(BaseModel):
