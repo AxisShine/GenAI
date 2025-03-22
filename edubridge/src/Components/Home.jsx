@@ -1,7 +1,20 @@
 import background from "../assets/background.jpg";
 import { motion } from "framer-motion";
-
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 function Home() {
+  const [text] = useTypewriter({
+    words: [
+      "Your Well-being, Your Future",
+      "Unlock Your Full Potential",
+      "Inspiring Healthy Habits",
+      "Transform Your Education Journey",
+    ],
+    loop: {}, // or a specific number, e.g. loop: 5
+    typeSpeed: 70,
+    deleteSpeed: 50,
+    delaySpeed: 2000,
+  });
+
   return (
     <div className="w-screen h-screen">
       <img
@@ -22,7 +35,8 @@ function Home() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          Your Well-being, Your Future
+          {text}
+          <Cursor cursorColor="white" />
         </motion.div>
         <div className="w-[21vw] h-[10vh] flex justify-between content-center">
           <motion.div
