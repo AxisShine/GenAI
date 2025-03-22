@@ -5,6 +5,19 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
+from database import Base, engine
+from routes import quiz, dashboard, learning
+
+# Create database tables
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+
+# Include routes
+app.include_router(quiz.router, prefix="/api", tags=["Quiz"])
+app.include_router(dashboard.router, prefix="/api", tags=["Dashboard"])
+app.include_router(learning.router, prefix="/api", tags=["Learning"])
+
 # Load environment variables from .env file
 load_dotenv()
 
