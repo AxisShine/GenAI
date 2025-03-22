@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import SessionLocal
 from models import User
 from schemas import LearningRequestSchema
-from services.ai_service import generate_learning_material
+from services.ai_service import generate_learning_material, generate_audio_from_text
 
 router = APIRouter()
 
@@ -23,4 +23,5 @@ def generate_learning_material_api(request: LearningRequestSchema, db: Session =
     learning_style = user.learning_style or "general"
     prompt = f"Explain {request.topic} in a style suitable for a {learning_style} learner."
     content = generate_learning_material(prompt)
-    return {"topic": request.topic, "content": content}
+    
+    return generate_audio_from_text(content)
