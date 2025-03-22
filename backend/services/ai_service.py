@@ -1,32 +1,17 @@
 import google.generativeai as genai
-import os
-import cohere
-from dotenv import load_dotenv
+from gtts import gTTS
+from fastapi.responses import FileResponse
+from config import GOOGLE_API_KEY
 
-load_dotenv()
+# Configure Gemini AI
+genai.configure(api_key=GOOGLE_API_KEY)
+model = genai.GenerativeModel("models/gemini-2.0-flash-lite-001")  # Use a valid model name
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+def generate_learning_material(prompt: str) -> str:
+    response = model.generate_content(prompt)
+    return response.text if response else "Error generating content"
 
-model = genai.GenerativeModel("gemini-pro")
-
-def generate_learning_material(prompt):
-    try:
-        response = model.generate_content(prompt)
-        return response.text
-    except Exception as e:
-        print(f"AI Generation Error: {e}")
-        return "Error generating content"
-    
-
-# Configure Cohere API key
-COHERE_API_KEY = os.getenv("COHERE_API_KEY")
-cohere_client = cohere.Client(COHERE_API_KEY)
-
-def generate_learning_material_cohere(prompt: str) -> str:
-    response = cohere_client.generate(
-        model="xlarge",
-        prompt=prompt,
-        max_tokens=500
-    )
-    return response.generations[0].text.strip()
-
+def generate_audio_from_text(text: str, filename: str = "learning_material.mp3"):
+    tts = gTTS(text=text, lang='en')
+    tts.save(filename)
+    return FileResponse(filename, media_type="audio/mpeg", filename=filename)
