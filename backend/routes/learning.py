@@ -1,26 +1,26 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from database import SessionLocal
+from services.generative_ai import generate_learning_material_gemini, generate_learning_material_cohere
 from models import User
 from schemas import LearningRequestSchema
 from services.ai_service import generate_learning_material
 
 router = APIRouter()
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+@router.post("/learning-material")
+def generate_learning_material(request: LearningRequestSchema):
+    # Customize the prompt based on the user's learning style
+    user_learning_style = "ADHD"  # Fetch from database (dummy value for now)
+    
+    prompt = f"Generate a learning guide on {request.topic} for a {user_learning_style} learner."
+    
+    # Use Gemini or Cohere to generate the material
+    # Option 1: Use Gemini (Google)
+    # response = generate_learning_material_gemini(prompt)
+    
+    # Option 2: Use Cohere
+    response = generate_learning_material_cohere(prompt)
+    
+    return {"topic": request.topic, "content": response}
 
-@router.post("/learning-mode")
-def generate_learning_material_api(request: LearningRequestSchema, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == request.user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-
-    learning_style = user.learning_style or "general"
-    prompt = f"Explain {request.topic} in a style suitable for a {learning_style} learner."
-    content = generate_learning_material(prompt)
-    return {"topic": request.topic, "content": content}
