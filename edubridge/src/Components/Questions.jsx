@@ -98,6 +98,83 @@ function Questions() {
                 Improve knowledge
               </div>
             </label>
+            {/* Third option*/}
+            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
+              What are you strengths?
+            </div>
+            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Numbers
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Words
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Critical Thinking
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Problem Solving
+              </div>
+            </label>
+            {/* Fourth option*/}
+            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
+              What are you weaknesses?
+            </div>
+            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Lack of Attention
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Procrastination
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Critical Thinking
+              </div>
+              <div className="questions-checklist">
+                <input
+                  type="checkbox"
+                  value="option1"
+                  {...register("checklist")}
+                />
+                Problem Solving
+              </div>
+            </label>
+            {/* Button*/}
             <button type="submit ">Submit</button>
           </form>
         </div>
