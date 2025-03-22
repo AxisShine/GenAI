@@ -1,4 +1,4 @@
-# GenAI
+# EduBridge
 For the GenAI Genesis Hackathon!
 
 
