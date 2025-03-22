@@ -12,13 +12,8 @@ function Questions() {
   };
   return (
     <>
-      <div className="relative w-screen h-screen">
-        <img
-          src={background}
-          alt="Background"
-          className="absolute top-0 left-0 w-full h-full"
-        />
-        <div className="thinText text-white text-5xl absolute flex justify-center items-center w-full h-[50vh]">
+      <div className="bg-white w-screen h-screen">
+        <div className="thinText text-purple-400 text-5xl absolute flex justify-center items-center w-full h-[50vh]">
           Let's Personalize Your Experience
         </div>
         <div className=" flex justify-center items-center w-screen h-screen">
@@ -28,10 +23,10 @@ function Questions() {
             style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)" }}
           >
             {/* first form question*/}
-            <div className="text-white w-full thinText text-xl mt-[15px] ml-[15px]">
+            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
               How do you prefer to learn?
             </div>
-            <label className="ml-[5px] text-white flex gap-[10px] justify-between w-[47vw]">
+            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
               <div className="questions-checklist">
                 <input
                   type="checkbox"
@@ -66,10 +61,10 @@ function Questions() {
               </div>
             </label>
             {/* second form question*/}
-            <div className="text-white w-full thinText text-xl mt-[15px] ml-[15px]">
+            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
               What are you learning goals?
             </div>
-            <label className="ml-[5px] text-white flex gap-[10px] justify-between w-[47vw]">
+            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
               <div className="questions-checklist">
                 <input
                   type="checkbox"
@@ -103,7 +98,7 @@ function Questions() {
                 Improve knowledge
               </div>
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit ">Submit</button>
           </form>
         </div>
       </div>
