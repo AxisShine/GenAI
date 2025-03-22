@@ -1,0 +1,17 @@
+routes
+    chat
+    dashboard
+    learning
+    quiz
+    upload
+
+
+services
+    ai service
+
+
+database.py
+models.py
+main.py
+config.py
+schemas.py
