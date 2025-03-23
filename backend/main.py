@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
 from routes import quiz, dashboard, learning, chat, upload
 from pydantic import BaseModel
@@ -10,6 +11,15 @@ Base.metadata.create_all(bind=engine)
 
 # Initialize FastAPI app
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (you can replace "*" with specific origins like ["http://localhost:3000"])
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 # Include routes
 app.include_router(quiz.router, prefix="/api", tags=["Quiz"])
