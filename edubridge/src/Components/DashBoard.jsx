@@ -8,13 +8,23 @@ import profilePic from "../assets/snoopy2.jpg";
 import { IoIosNotifications } from "react-icons/io";
 import { FaComputer } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-// ...existing code...
-
+import computer from "../assets/video.png";
+import user from "../assets/user.png";
+import accessibility from "../assets/accessibility.png";
+import AccessibilityButton from "./Accessibility";
 function DashBoard() {
   const navigate = useNavigate();
 
   const handleLearningModeClick = () => {
     navigate("/learning");
+  };
+
+  const handleDashboardClick = () => {
+    navigate("/dashboard");  // Redirect to /dashboard
+  };
+
+  const handleLogoutClick = () => {
+    navigate("/");  // Redirect to root (logout)
   };
 
   return (
@@ -26,7 +36,7 @@ function DashBoard() {
             {/* Logo */}
             <div className="mt-[15px] w-[20vw] h-[15vh] justify-center items-center flex">
               <motion.img
-                className="rounded-full w-30 h-30 object-cover"
+                className="rounded-full w-50 h-30 object-cover"
                 src={logo}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -38,6 +48,7 @@ function DashBoard() {
                 className="dashboard-buttons text-white mt-[8px] w-[70%] h-[20%] flex justify-center items-center thinText text-xl"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={handleDashboardClick}
               >
                 <span className="mr-[4px]">{<BiSolidDashboard />}</span>
                 Dashboard
@@ -63,17 +74,18 @@ function DashBoard() {
                 Focus Mode
               </motion.div>
             </div>
-            {/* Exit button*/}
+            {/* Logout (was exit) button*/}
             <div className=" h-full flex flex-col justify-end mb-[10px]">
               <motion.div
                 className="dashboard-buttons text-white mt-[8px] w-full flex justify-center items-center thinText text-s px-[5px]"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={handleLogoutClick}  // Logout and redirect to root
               >
                 <span className="mr-[4px]">
                   <IoIosExit />
                 </span>
-                Exit
+                Logout
               </motion.div>
             </div>
           </div>
@@ -110,6 +122,17 @@ function DashBoard() {
                   Always stay updated in your student portal
                 </div>
               </div>
+              <img 
+              src={user}
+              style={{
+                position: 'absolute',
+                top: '185px', 
+                right: '110px', 
+                width: '390px', 
+                height: '250px', 
+              }}
+        
+              ></img>
             </div>
           </div>
           {/* Daily Affirmation */}
@@ -131,10 +154,16 @@ function DashBoard() {
                 <p className="thinText text-purple-500">
                   Daily Meditation Video
                 </p>
-                <button className="border-1">View</button>
+                <button className="border-1"
+                onClick = {() => window.open("https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D", "_blank", "noreferrer")}
+              >
+                View</button>
               </div>
               <div className="">
-                <FaComputer size={80} />
+                <img 
+                src={computer}
+                style={{ width: '70px', height: '70px' }}
+                ></img>
               </div>
             </div>
             {/* Second Box */}
@@ -163,6 +192,7 @@ function DashBoard() {
             </div>
           </div>
         </div>
+        <AccessibilityButton/>
       </div>
     </>
   );
