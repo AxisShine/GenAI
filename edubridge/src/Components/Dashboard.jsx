@@ -12,7 +12,6 @@ import computer from "../assets/video.png";
 import user from "../assets/user.png";
 import accessibility from "../assets/accessibility.png";
 import AccessibilityButton from "./Accessibility";
-
 function DashBoard() {
   const navigate = useNavigate();
 
@@ -44,17 +43,17 @@ function DashBoard() {
               ></motion.img>
             </div>
             <div className="mt-[15px] w-[20vw] h-[40vh] flex flex-col items-center gap-[20px] justify-start">
-              {/* Dashboard Button */}
+              {/* Dashboard Button*/}
               <motion.div
                 className="dashboard-buttons text-white mt-[8px] w-[70%] h-[20%] flex justify-center items-center thinText text-xl"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={handleDashboardClick}  // Navigate to dashboard
+                onClick={handleDashboardClick}
               >
                 <span className="mr-[4px]">{<BiSolidDashboard />}</span>
                 Dashboard
               </motion.div>
-              {/* Learning Mode Button */}
+              {/* Learning Mode Button*/}
               <motion.div
                 className="dashboard-buttons text-white mt-[8px] w-[70%] h-[20%] flex justify-center items-center thinText text-xl"
                 whileHover={{ scale: 1.2 }}
@@ -63,7 +62,7 @@ function DashBoard() {
               >
                 <span className="mr-[4px]">{<LuListTodo />} </span>Learning Mode
               </motion.div>
-              {/* Focus Mode Button */}
+              {/* Focus Mode Button*/}
               <motion.div
                 className="dashboard-buttons text-white mt-[8px] w-[70%] h-[20%] flex justify-center items-center thinText text-xl"
                 whileHover={{ scale: 1.2 }}
@@ -75,7 +74,7 @@ function DashBoard() {
                 Focus Mode
               </motion.div>
             </div>
-            {/* Logout button */}
+            {/* Logout (was exit) button*/}
             <div className=" h-full flex flex-col justify-end mb-[10px]">
               <motion.div
                 className="dashboard-buttons text-white mt-[8px] w-full flex justify-center items-center thinText text-s px-[5px]"
@@ -124,15 +123,16 @@ function DashBoard() {
                 </div>
               </div>
               <img 
-                src={user}
-                style={{
-                  position: 'absolute',
-                  top: '185px', 
-                  right: '110px', 
-                  width: '390px', 
-                  height: '250px', 
-                }}
-              />
+              src={user}
+              style={{
+                position: 'absolute',
+                top: '185px', 
+                right: '110px', 
+                width: '390px', 
+                height: '250px', 
+              }}
+
+              ></img>
             </div>
           </div>
           {/* Daily Affirmation */}
@@ -155,16 +155,15 @@ function DashBoard() {
                   Daily Meditation Video
                 </p>
                 <button className="border-1"
-                  onClick={() => window.open("https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D", "_blank", "noreferrer")}
-                >
-                  View
-                </button>
+                onClick = {() => window.open("https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D", "_blank", "noreferrer")}
+              >
+                View</button>
               </div>
               <div className="">
                 <img 
-                  src={computer}
-                  style={{ width: '70px', height: '70px' }}
-                />
+                src={computer}
+                style={{ width: '70px', height: '70px' }}
+                ></img>
               </div>
             </div>
             {/* Second Box */}
