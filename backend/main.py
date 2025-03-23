@@ -1,10 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
 from routes import quiz, dashboard, learning, chat, upload
 from pydantic import BaseModel
 from fastapi.responses import FileResponse, HTMLResponse
-from services.ai_service import generate_learning_material, generate_audio_from_text 
+from services.ai_service import generate_video
+import mimetypes
+
+from gtts import gTTS
+
+tts = gTTS("Hello world!", lang="en")
+tts.save("test_audio.mp3")
 
 # Initialize DB
 Base.metadata.create_all(bind=engine)
@@ -32,3 +38,22 @@ app.include_router(upload.router, prefix="/api", tags=["Upload"])
 @app.get("/favicon.ico")
 async def favicon():
     return FileResponse("static/favicon.ico")
+
+class VideoRequest(BaseModel):
+    topic: str
+
+@app.post("/api/generate_video")
+async def generate_video_api(request: VideoRequest):
+    # Get the topic from the request
+    topic = request.topic.strip()
+    
+    if not topic:
+        raise HTTPException(status_code=400, detail="No topic provided")
+    
+    try:
+        # Start video generation
+        video_file = await generate_video(topic)
+        return {"videoUrl": video_file}
+    except Exception as e:
+        # Handle any exceptions and return a server error
+        raise HTTPException(status_code=500, detail=f"Error generating video: {str(e)}")

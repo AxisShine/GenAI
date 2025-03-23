@@ -10,7 +10,6 @@ import { FaComputer } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import computer from "../assets/video.png";
 import user from "../assets/user.png";
-import accessibility from "../assets/accessibility.png";
 import AccessibilityButton from "./Accessibility";
 function DashBoard() {
   const navigate = useNavigate();
