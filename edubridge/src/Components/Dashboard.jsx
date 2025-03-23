@@ -1,4 +1,4 @@
-import logo from "../assets/edubridge.png";
+import logo from "../assets/logo2.png";
 import { motion } from "framer-motion";
 import { BiSolidDashboard } from "react-icons/bi";
 import { LuListTodo } from "react-icons/lu";
@@ -10,7 +10,6 @@ import { FaComputer } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import computer from "../assets/video.png";
 import user from "../assets/user.png";
-import accessibility from "../assets/accessibility.png";
 import AccessibilityButton from "./Accessibility";
 function DashBoard() {
   const navigate = useNavigate();
@@ -20,11 +19,11 @@ function DashBoard() {
   };
 
   const handleDashboardClick = () => {
-    navigate("/dashboard");  // Redirect to /dashboard
+    navigate("/dashboard"); // Redirect to /dashboard
   };
 
   const handleLogoutClick = () => {
-    navigate("/");  // Redirect to root (logout)
+    navigate("/"); // Redirect to root (logout)
   };
 
   return (
@@ -80,7 +79,7 @@ function DashBoard() {
                 className="dashboard-buttons text-white mt-[8px] w-full flex justify-center items-center thinText text-s px-[5px]"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={handleLogoutClick}  // Logout and redirect to root
+                onClick={handleLogoutClick} // Logout and redirect to root
               >
                 <span className="mr-[4px]">
                   <IoIosExit />
@@ -122,16 +121,15 @@ function DashBoard() {
                   Always stay updated in your student portal
                 </div>
               </div>
-              <img 
-              src={user}
-              style={{
-                position: 'absolute',
-                top: '185px', 
-                right: '110px', 
-                width: '390px', 
-                height: '250px', 
-              }}
-
+              <img
+                src={user}
+                style={{
+                  position: "absolute",
+                  top: "185px",
+                  right: "110px",
+                  width: "390px",
+                  height: "250px",
+                }}
               ></img>
             </div>
           </div>
@@ -154,15 +152,23 @@ function DashBoard() {
                 <p className="thinText text-purple-500">
                   Daily Meditation Video
                 </p>
-                <button className="border-1"
-                onClick = {() => window.open("https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D", "_blank", "noreferrer")}
-              >
-                View</button>
+                <button
+                  className="border-1"
+                  onClick={() =>
+                    window.open(
+                      "https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D",
+                      "_blank",
+                      "noreferrer"
+                    )
+                  }
+                >
+                  View
+                </button>
               </div>
               <div className="">
-                <img 
-                src={computer}
-                style={{ width: '70px', height: '70px' }}
+                <img
+                  src={computer}
+                  style={{ width: "70px", height: "70px" }}
                 ></img>
               </div>
             </div>
@@ -192,7 +198,7 @@ function DashBoard() {
             </div>
           </div>
         </div>
-        <AccessibilityButton/>
+        <AccessibilityButton />
       </div>
     </>
   );
