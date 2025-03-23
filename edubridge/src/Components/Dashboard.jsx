@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import computer from "../assets/video.png";
 import user from "../assets/user.png";
 import AccessibilityButton from "./Accessibility";
+import { FaBookOpen, FaQuestionCircle } from "react-icons/fa";
 function DashBoard() {
   const navigate = useNavigate();
 
@@ -70,7 +71,7 @@ function DashBoard() {
                 <span className="mr-[4px]">
                   <MdCenterFocusWeak />{" "}
                 </span>
-                Focus Mode
+                Note-Taking Mode
               </motion.div>
             </div>
             {/* Logout (was exit) button*/}
@@ -145,45 +146,54 @@ function DashBoard() {
             </div>
           </div>
           {/* Three Boxes */}
-          <div className="col-span-7 row-span-2 flex items-start justify-around">
+          <div className="col-span-7 gap-[10px] row-span-2 flex items-start justify-around">
             {/* First Box */}
-            <div className="border border-gray-300 bg-gray-200 w-[30%] h-[60%] rounded-2xl flex flex-col justify-between items-center p-4 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex flex-col gap-[15px]">
-                <p className="thinText text-purple-500">
-                  Daily Meditation Video
-                </p>
-                <button
-                  className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
-                  onClick={() =>
-                    window.open(
-                      "https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D",
-                      "_blank",
-                      "noreferrer"
-                    )
-                  }
-                >
-                  View
-                </button>
-              </div>
-              <div className="">
-                <img
-                  className="mt-[10px]"
-                  src={computer}
-                  style={{ width: "70px", height: "70px" }}
-                ></img>
-              </div>
+            <div className="w-1/3 flex flex-col items-center p-6 rounded-xl shadow-lg bg-purple-500 text-white">
+              {/* Icon or image */}
+              <FaBookOpen size={50} className="mb-4" />
+              <p className="text-xl font-semibold">Learning Mode</p>
             </div>
             {/* Second Box */}
+            <div className="w-1/3 flex flex-col items-center p-6 rounded-xl shadow-lg bg-purple-500 text-white">
+              {/* Icon or image */}
+              <FaQuestionCircle size={50} className="mb-4" />
+              <p className="text-xl font-semibold">Learning Quizzes</p>
+            </div>
             {/* Third box */}
-            <div className="border border-gray-300 bg-gray-200 w-[30%] h-[60%] rounded-2xl flex flex-col justify-between items-center p-4 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <div className="flex flex-col gap-[5px]">
-                <p className="thinText text-purple-500 ml-[15px]">Progress</p>
-                <p className="thinText text-purple-500 ml-[15px]">
-                  You completed 3 learning sessions this week{" "}
-                </p>
-              </div>
-              <div className="">
-                <FaComputer size={80} />
+            <div className="w-1/3 flex flex-col items-center p-6 rounded-xl shadow-lg bg-pink-200 text-gray-800">
+              <p className="text-lg font-semibold mb-2">Progress</p>
+              <p className="text-sm mb-4">Completed 3/4 focus sessions!</p>
+              {/* Example Circular Progress */}
+              <div className="relative">
+                <svg className="w-20 h-20">
+                  {/* Background circle */}
+                  <circle
+                    className="text-gray-300"
+                    strokeWidth="4"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="30"
+                    cx="40"
+                    cy="40"
+                  />
+                  {/* Progress circle */}
+                  <circle
+                    className="text-purple-500"
+                    strokeWidth="4"
+                    strokeDasharray="188" // 2πr for r=30 ~ 188.5
+                    strokeDashoffset="47" // Example: 75% progress => 188.5 * 0.25 = 47
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="30"
+                    cx="40"
+                    cy="40"
+                  />
+                </svg>
+                {/* Text in the center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xl font-bold text-purple-600">75%</span>
+                </div>
               </div>
             </div>
           </div>
