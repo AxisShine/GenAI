@@ -12,3 +12,8 @@ class LearningRequestSchema(BaseModel):
 class UserSchema(BaseModel):
     user_id: str
     learning_style: Dict[str, str]  # ADHD, Dyslexia, etc.
+
+class ActiveRecallSchema(BaseModel):
+    user_id: str
+    learning_style: Dict[str, str]  # ADHD, Dyslexia, etc.
+    responses: Dict[str, str]  # Mapping of learning preferences
