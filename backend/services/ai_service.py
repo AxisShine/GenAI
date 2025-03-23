@@ -5,7 +5,7 @@ from config import GOOGLE_API_KEY
 
 # Configure Gemini AI
 genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel("models/gemini-2.0-flash-lite-001")  # Use a valid model name
+model = genai.GenerativeModel("models/gemini-2.0-flash-lite-001")  # Use a valid model name!
 
 def generate_learning_material_cohere(prompt: str) -> str:
     response = model.generate_content(prompt)
