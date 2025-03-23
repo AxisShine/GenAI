@@ -36,8 +36,6 @@ async def upload_file(file: UploadFile = File(...)):
         extracted_text = extract_text_from_image(file_path)
     else:
         raise HTTPException(status_code=400, detail="Unsupported file type")
-    
-    print(f"Extracted Text: {extracted_text}")
 
     # Save text to file
     text_file = f"{UPLOAD_DIR}/{file.filename}.txt"

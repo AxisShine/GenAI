@@ -7,7 +7,16 @@ import { IoIosExit } from "react-icons/io";
 import profilePic from "../assets/snoopy2.jpg";
 import { IoIosNotifications } from "react-icons/io";
 import { FaComputer } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+// ...existing code...
+
 function DashBoard() {
+  const navigate = useNavigate();
+
+  const handleLearningModeClick = () => {
+    navigate("/learning");
+  };
+
   return (
     <>
       <div className="h-[900px]">
@@ -38,6 +47,7 @@ function DashBoard() {
                 className="dashboard-buttons text-white mt-[8px] w-[70%] h-[20%] flex justify-center items-center thinText text-xl"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={handleLearningModeClick}
               >
                 <span className="mr-[4px]">{<LuListTodo />} </span>Learning Mode
               </motion.div>

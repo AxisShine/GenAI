@@ -26,7 +26,6 @@ function Learning() {
       if (!response.ok) throw new Error("Upload failed");
 
       const data = await response.json();
-      console.log("Upload success:", data);
       setText(data.text); // Display extracted text
     } catch (error) {
       console.error("Upload error:", error);
