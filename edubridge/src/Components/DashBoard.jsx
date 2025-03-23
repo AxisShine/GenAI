@@ -9,6 +9,8 @@ import { IoIosNotifications } from "react-icons/io";
 import { FaComputer } from "react-icons/fa6";
 import computer from "../assets/video.png";
 import user from "../assets/user.png";
+import accessibility from "../assets/accessibility.png";
+import AccessibilityButton from "./Accessibility";
 function DashBoard() {
   return (
     <>
@@ -19,7 +21,7 @@ function DashBoard() {
             {/* Logo */}
             <div className="mt-[15px] w-[20vw] h-[15vh] justify-center items-center flex">
               <motion.img
-                className="rounded-full w-30 h-30 object-cover"
+                className="rounded-full w-50 h-30 object-cover"
                 src={logo}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -108,7 +110,7 @@ function DashBoard() {
                 position: 'absolute',
                 top: '185px', 
                 right: '110px', 
-                width: '350px', 
+                width: '390px', 
                 height: '250px', 
               }}
         
@@ -172,6 +174,7 @@ function DashBoard() {
             </div>
           </div>
         </div>
+        <AccessibilityButton/>
       </div>
     </>
   );
