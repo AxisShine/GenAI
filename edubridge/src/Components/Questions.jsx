@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Questions() {
+  const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
@@ -55,6 +57,12 @@ function Questions() {
               className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
             >
               Return to Form
+            </button>
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="ml-[20px] px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+            >
+              Next
             </button>
           </div>
         ) : (
