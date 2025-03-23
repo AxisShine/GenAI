@@ -147,13 +147,13 @@ function DashBoard() {
           {/* Three Boxes */}
           <div className="col-span-7 row-span-2 flex items-start justify-around">
             {/* First Box */}
-            <div className="border-5 border-gray-300 bg-gray-200 w-[30%] h-[40%] rounded-2xl flex justify-around items-center">
+            <div className="border border-gray-300 bg-gray-200 w-[30%] h-[60%] rounded-2xl flex flex-col justify-between items-center p-4 shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <div className="flex flex-col gap-[15px]">
                 <p className="thinText text-purple-500">
                   Daily Meditation Video
                 </p>
                 <button
-                  className="border-1"
+                  className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors"
                   onClick={() =>
                     window.open(
                       "https://www.youtube.com/watch?v=zSkFFW--Ma0&pp=ygUdbWVkaXRhdGlvbiB2aWRlbyBmb3Igc3R1ZGVudHM%3D",
@@ -167,25 +167,15 @@ function DashBoard() {
               </div>
               <div className="">
                 <img
+                  className="mt-[10px]"
                   src={computer}
                   style={{ width: "70px", height: "70px" }}
                 ></img>
               </div>
             </div>
             {/* Second Box */}
-            <div className="border-5 border-gray-300 bg-gray-200 w-[30%] h-[40%] rounded-2xl flex justify-around items-center">
-              <div className="flex flex-col gap-[15px]">
-                <p className="thinText text-purple-500">
-                  Daily Meditation Video
-                </p>
-                <button className="border-1">View</button>
-              </div>
-              <div className="">
-                <FaComputer size={80} />
-              </div>
-            </div>
             {/* Third box */}
-            <div className="border-5 border-gray-300 bg-gray-200 w-[30%] h-[40%] rounded-2xl flex justify-around items-center">
+            <div className="border border-gray-300 bg-gray-200 w-[30%] h-[60%] rounded-2xl flex flex-col justify-between items-center p-4 shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <div className="flex flex-col gap-[5px]">
                 <p className="thinText text-purple-500 ml-[15px]">Progress</p>
                 <p className="thinText text-purple-500 ml-[15px]">
