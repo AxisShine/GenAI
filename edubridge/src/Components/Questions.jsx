@@ -72,6 +72,18 @@ function Questions() {
           >
             <div className="p-6 md:p-8">
               <QuestionSection
+                title="Do you have a learning disability?"
+                name="learningStyle"
+                register={register}
+                options={[
+                  { value: "ADHD", label: "ADHD" },
+                  { value: "Dyslexia", label: "Dyslexia" },
+                  { value: "Dysgraphia", label: "Dysgraphia" },
+                  { value: "Non_verbal", label: "Non-verbalism" },
+                ]}
+              />
+
+              <QuestionSection
                 title="How do you prefer to learn?"
                 name="learningStyle"
                 register={register}
