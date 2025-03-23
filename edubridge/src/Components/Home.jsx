@@ -1,6 +1,7 @@
 import background from "../assets/background2.jpg";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import logo from "../assets/logo2.png";
 function Home() {
   const [text] = useTypewriter({
     words: [
@@ -22,14 +23,14 @@ function Home() {
         alt="Background"
         className="absolute top-0 left-0 w-full h-full"
       />
-      <div className="relative w-full h-full flex flex-col gap-15 justify-center items-center">
-        <motion.div
-          className="text-purple-400 thinText text-6xl"
-          whileHover={{ scale: 1.3 }}
+      <div className="relative w-full h-full flex flex-col gap-5 justify-center items-center">
+        <motion.img
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-        >
-          edubridge
-        </motion.div>
+          src={logo}
+          alt="Logo"
+          className="rounded-2xl w-40 h-40 object-cover"
+        ></motion.img>
         <motion.div
           className="text-purple-400 thinText text-2xl"
           whileHover={{ scale: 1.1 }}

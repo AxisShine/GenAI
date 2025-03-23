@@ -1,185 +1,154 @@
 import { useForm } from "react-hook-form";
-import background from "../assets/background.jpg";
+import { useState } from "react";
 
 function Questions() {
-  const { register, handleSubmit } = useForm({
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm({
     defaultValues: {
-      checklist: [], // ensures it's always an array
+      learningStyle: [],
+      learningGoals: [],
+      strengths: [],
+      weaknesses: [],
     },
   });
+
   const onSubmit = (data) => {
-    console.log(data); // data.checklist will be an array of selected options
+    console.log(data);
+    setIsSubmitted(true);
   };
+
   return (
-    <>
-      <div className="bg-white w-screen h-screen">
-        <div className="thinText text-purple-400 text-5xl absolute flex justify-center items-center w-full h-[50vh]">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-3xl">
+        <h1 className="text-4xl md:text-5xl font-light text-purple-600 text-center mb-8">
           Let's Personalize Your Experience
-        </div>
-        <div className=" flex justify-center items-center w-screen h-screen">
+        </h1>
+
+        {isSubmitted ? (
+          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+            <svg
+              className="w-16 h-16 text-green-500 mx-auto mb-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13l4 4L19 7"
+              ></path>
+            </svg>
+            <h2 className="text-2xl font-medium text-gray-800 mb-2">
+              Thank You!
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Your preferences have been saved successfully.
+            </p>
+            <button
+              onClick={() => setIsSubmitted(false)}
+              className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+            >
+              Return to Form
+            </button>
+          </div>
+        ) : (
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="absolute mt-[20px] w-[50vw] h-[40vh] flex flex-col justify-center items-center gap-[20px] rounded-lg"
-            style={{ boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)" }}
+            className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            {/* first form question*/}
-            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
-              How do you prefer to learn?
+            <div className="p-6 md:p-8">
+              <QuestionSection
+                title="How do you prefer to learn?"
+                name="learningStyle"
+                register={register}
+                options={[
+                  { value: "visual", label: "Visuals" },
+                  { value: "auditory", label: "Auditory" },
+                  { value: "reading", label: "Reading" },
+                  { value: "handson", label: "Hands-on" },
+                ]}
+              />
+
+              <QuestionSection
+                title="What are your learning goals?"
+                name="learningGoals"
+                register={register}
+                options={[
+                  { value: "focus", label: "Improve focus" },
+                  { value: "speed", label: "Learn faster" },
+                  { value: "stress", label: "Reduce stress" },
+                  { value: "knowledge", label: "Improve knowledge" },
+                ]}
+              />
+
+              <QuestionSection
+                title="What are your strengths?"
+                name="strengths"
+                register={register}
+                options={[
+                  { value: "numbers", label: "Numbers" },
+                  { value: "words", label: "Words" },
+                  { value: "criticalThinking", label: "Critical Thinking" },
+                  { value: "problemSolving", label: "Problem Solving" },
+                ]}
+              />
+
+              <QuestionSection
+                title="What are your weaknesses?"
+                name="weaknesses"
+                register={register}
+                options={[
+                  { value: "attention", label: "Lack of Attention" },
+                  { value: "procrastination", label: "Procrastination" },
+                  { value: "criticalThinking", label: "Critical Thinking" },
+                  { value: "problemSolving", label: "Problem Solving" },
+                ]}
+              />
             </div>
-            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Visuals
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Auditory
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Reading
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Hands-on
-              </div>
-            </label>
-            {/* second form question*/}
-            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
-              What are you learning goals?
+
+            <div className="px-8 py-6 bg-gray-50 flex justify-end">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all disabled:opacity-70"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Preferences"}
+              </button>
             </div>
-            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Improve focus
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Learn faster
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Reduce stress
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Improve knowledge
-              </div>
-            </label>
-            {/* Third option*/}
-            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
-              What are you strengths?
-            </div>
-            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Numbers
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Words
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Critical Thinking
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Problem Solving
-              </div>
-            </label>
-            {/* Fourth option*/}
-            <div className="text-purple-400 w-full thinText text-xl mt-[15px] ml-[15px]">
-              What are you weaknesses?
-            </div>
-            <label className="ml-[5px] text-purple-400 flex gap-[10px] justify-between w-[47vw]">
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Lack of Attention
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Procrastination
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Critical Thinking
-              </div>
-              <div className="questions-checklist">
-                <input
-                  type="checkbox"
-                  value="option1"
-                  {...register("checklist")}
-                />
-                Problem Solving
-              </div>
-            </label>
-            {/* Button*/}
-            <button type="submit ">Submit</button>
           </form>
-        </div>
+        )}
       </div>
-    </>
+    </div>
+  );
+}
+
+function QuestionSection({ title, name, register, options }) {
+  return (
+    <div className="mb-8">
+      <h2 className="text-xl font-light text-purple-600 mb-4">{title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {options.map((option) => (
+          <label
+            key={option.value}
+            className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:border-purple-300 transition-colors cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              value={option.value}
+              {...register(name)}
+              className="h-5 w-5 text-purple-600 rounded focus:ring-purple-500"
+            />
+            <span className="text-gray-700">{option.label}</span>
+          </label>
+        ))}
+      </div>
+    </div>
   );
 }
 
