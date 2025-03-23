@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from database import SessionLocal
-from services.ai_service import generate_learning_material_gemini, generate_learning_material_cohere
 from models import User
 from schemas import LearningRequestSchema
 from services.ai_service import generate_learning_material, generate_audio_from_text
